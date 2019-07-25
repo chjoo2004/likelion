@@ -1,0 +1,29 @@
+{% extends "main/layout.html" %}
+{% block title %}
+Board
+{% endblock %}
+    {% block content %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">username</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for board in boards %}
+              <tr>
+                <th scope="row">{{board.id}}</th>
+                <td><a href="/board/{{board.id}}">{{board.title}}</a></td>
+                <td>{{board.username}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if request.session.user %}
+          <a href="{% url 'board' %}" calss="btn btn-primary">Create</a>
+          {% endif %}
+      </div>
+      {% endblock %}
